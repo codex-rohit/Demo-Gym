@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>DEMO Fitness Studio | India's Premier Athletic Gym</title>
+  <meta name="description" content="India's highest-rated fitness club and training studio in Bengaluru, Mumbai, Delhi NCR, and Hyderabad. Claim your free 7-day trial pass." />
+  <meta property="og:title" content="DEMO Fitness Studio | Transform Your Body" />
+  <meta property="og:description" content="Claim your free 7-day all-access gym & studio trial pass today." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       MOBILE-FIRST CSS ARCHITECTURE
+       Base styles designed for mobile screens (320px - 480px),
+       then scaled up progressively for tablet (768px) and desktop (1024px+).
+    ------------------------------------------------------------- */
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #141414;
+      --bg-card-alt: #1a1a1a;
+      --bg-elevated: #222222;
+      --accent: #00d4ff;
+      --accent-glow: rgba(0, 212, 255, 0.4);
+      --accent-secondary: #0066ff;
+      --text: #ffffff;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --border: rgba(255, 255, 255, 0.12);
+      --border-accent: rgba(0, 212, 255, 0.45);
+      --green: #25D366;
+      --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.55;
+      overflow-x: hidden;
+      padding-bottom: calc(72px + var(--safe-bottom)); /* Clearance for mobile sticky bottom bar */
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        font-size: 16px;
+        padding-bottom: 0;
+      }
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: var(--font-heading);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    @media (min-width: 640px) {
+      .container { padding: 0 1.5rem; }
+    }
+
+    /* Utility badges & buttons */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 9999px;
+      background: rgba(0, 212, 255, 0.12);
+      color: var(--accent);
+      border: 1px solid var(--border-accent);
+    }
+
+    /* Buttons: Minimum 48px height on mobile for touch accessibility */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 48px;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      text-align: center;
+      width: 100%;
+    }
+    @media (min-width: 640px) {
+      .btn { width: auto; border-radius: 9999px; }
+    }
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00d4ff 0%, #0077ff 100%);
+      color: #000;
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:active, .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .btn-whatsapp {
+      background: var(--green);
+      color: #000;
+      font-weight: 900;
+    }
+
+    /* -------------------------------------------------------------
+       0. HEADER & MOBILE NAVIGATION
+    ------------------------------------------------------------- */
+    .top-bar {
+      display: none;
+      background: #050505;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      padding: 0.4rem 0;
+    }
+    @media (min-width: 900px) {
+      .top-bar { display: block; }
+      .top-bar-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    @media (min-width: 768px) {
+      .nav-bar { height: 72px; }
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #00d4ff, #0077ff);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+    .brand-name {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: #fff;
+    }
+    .brand-name span { color: var(--accent); }
+
+    .nav-menu-desktop {
+      display: none;
+      list-style: none;
+      gap: 1.75rem;
+    }
+    @media (min-width: 992px) {
+      .nav-menu-desktop { display: flex; align-items: center; }
+    }
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #d1d5db;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--accent); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .header-join-desktop {
+      display: none;
+    }
+    @media (min-width: 640px) {
+      .header-join-desktop { display: inline-flex; }
+    }
+
+    .menu-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    @media (min-width: 992px) {
+      .menu-toggle { display: none; }
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 89;
+      display: none;
+      flex-direction: column;
+      padding: 1.5rem 1.25rem;
+      overflow-y: auto;
+      border-top: 1px solid var(--border);
+      animation: fadeIn 0.2s ease;
+    }
+    .mobile-drawer.open { display: flex; }
+    .drawer-nav-link {
+      padding: 0.9rem 0;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #e5e7eb;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .drawer-nav-link:active { color: var(--accent); }
+    .drawer-footer {
+      margin-top: auto;
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* -------------------------------------------------------------
+       STICKY MOBILE ACTION BAR (Pinned for thumbs)
+    ------------------------------------------------------------- */
+    .mobile-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 95;
+      background: rgba(12, 12, 12, 0.95);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+      padding: 0.6rem 0.75rem calc(0.6rem + var(--safe-bottom));
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    @media (min-width: 768px) {
+      .mobile-bottom-bar { display: none; }
+    }
+    .bar-btn-wa {
+      flex: 1;
+      height: 46px;
+      background: #25D366;
+      color: #000;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .bar-btn-trial {
+      flex: 1.4;
+      height: 46px;
+      background: linear-gradient(135deg, #00d4ff, #0077ff);
+      color: #000;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(0, 212, 255, 0.4);
+    }
+
+    /* -------------------------------------------------------------
+       1. HERO SECTION (Mobile-First)
+    ------------------------------------------------------------- */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 60px);
+      display: flex;
+      align-items: center;
+      padding: 2.5rem 0 3.5rem 0;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .hero {
+        min-height: 85vh;
+        padding: 5rem 0;
+      }
+    }
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.95) 85%, #0a0a0a 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    /* City selector pill */
+    .city-select-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 0.4rem 0.85rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.8rem;
+    }
+    .city-select-bar select {
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      font-weight: 700;
+      outline: none;
+      font-size: 0.8rem;
+    }
+    .city-select-bar select option {
+      background: #181818;
+      color: #fff;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 7.5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #00d4ff 10%, #ffffff 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 3vw, 1.15rem);
+      color: #d1d5db;
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (min-width: 640px) {
+      .hero-actions { flex-direction: row; }
+    }
+
+    /* Trust metrics 2x2 grid on mobile */
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+    }
+    @media (min-width: 640px) {
+      .hero-metrics { grid-template-columns: repeat(4, 1fr); }
+    }
+    .metric-val {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .metric-val span { color: var(--accent); }
+    .metric-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION SYSTEM
+    ------------------------------------------------------------- */
+    .section {
+      padding: 4rem 0;
+      position: relative;
+    }
+    @media (min-width: 768px) {
+      .section { padding: 6rem 0; }
+    }
+    .section-header {
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    @media (min-width: 768px) {
+      .section-header { text-align: center; max-width: 680px; margin-left: auto; margin-right: auto; }
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 5vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0.5rem 0 0.75rem 0;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------
+       2. ABOUT SECTION
+    ------------------------------------------------------------- */
+    .about-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    @media (min-width: 900px) {
+      .about-wrap { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 3.5rem; }
+    }
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(0, 212, 255, 0.12);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .benefit-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+    .benefit-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .about-image {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .about-image img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .about-image img { height: 460px; }
+    }
+    .about-floating-chip {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      background: rgba(15, 15, 15, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 1rem;
+      font-size: 0.8rem;
+    }
+
+    /* -------------------------------------------------------------
+       3. FEATURED PROGRAMS (Mobile Swipe / Responsive Grid)
+    ------------------------------------------------------------- */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .programs-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .programs-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .program-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .program-card:active, .program-card:hover {
+      border-color: var(--border-accent);
+    }
+    .program-img-box {
+      position: relative;
+      height: 190px;
+    }
+    .program-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .program-tag-pill {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+    }
+    .program-content {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .program-content h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+    }
+    .program-meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .meta-chip {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+    .program-content p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    /* -------------------------------------------------------------
+       4. TRAINERS SECTION
+    ------------------------------------------------------------- */
+    .trainers-scroll-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 600px) {
+      .trainers-scroll-wrap { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .trainers-scroll-wrap { grid-template-columns: repeat(4, 1fr); }
+    }
+    .trainer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .trainer-photo {
+      height: 260px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .trainer-details {
+      padding: 1.25rem;
+    }
+    .trainer-details h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+    .trainer-specialty {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .trainer-certs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 0.75rem;
+    }
+    .cert-tag {
+      font-size: 0.65rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      color: #d1d5db;
+    }
+
+    /* -------------------------------------------------------------
+       5. CLASS SCHEDULE (Mobile Card List + Desktop Table)
+    ------------------------------------------------------------- */
+    .schedule-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.25rem;
+    }
+    @media (min-width: 768px) {
+      .schedule-box { padding: 2rem; }
+    }
+
+    /* Scrollable horizontal Day Chips for mobile thumbs */
+    .day-selector-scroll {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .day-selector-scroll::-webkit-scrollbar { display: none; }
+    .day-pill {
+      flex-shrink: 0;
+      min-height: 42px;
+      padding: 0.5rem 1.1rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: #9ca3af;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .day-pill.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow);
+    }
+
+    .schedule-alert-banner {
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-size: 0.78rem;
+      color: #e0f2fe;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Mobile Cards View for Schedule */
+    .mobile-schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .mobile-schedule-list { display: none; }
+    }
+    .mobile-class-item {
+      background: #181818;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .mobile-class-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .mobile-class-time {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+    .mobile-class-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .mobile-class-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Desktop Table View for Schedule */
+    .desktop-schedule-table {
+      display: none;
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    @media (min-width: 768px) {
+      .desktop-schedule-table { display: table; }
+    }
+    .desktop-schedule-table th {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    .desktop-schedule-table td {
+      padding: 1.1rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+    }
+
+    /* -------------------------------------------------------------
+       6. MEMBER RESULTS (Stacked on Mobile)
+    ------------------------------------------------------------- */
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .results-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .results-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .result-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .before-after-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .split-pic {
+      position: relative;
+      height: 160px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .split-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .split-tag {
+      position: absolute;
+      bottom: 0.4rem;
+      left: 0.4rem;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .result-stats-row {
+      display: flex;
+      justify-content: space-around;
+      background: rgba(0, 212, 255, 0.06);
+      border: 1px solid rgba(0, 212, 255, 0.15);
+      border-radius: 10px;
+      padding: 0.6rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.75rem;
+      text-align: center;
+    }
+    .result-stats-row strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+    .result-quote {
+      font-style: italic;
+      color: #d1d5db;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    /* -------------------------------------------------------------
+       7. PRICING SECTION
+    ------------------------------------------------------------- */
+    .currency-toggle-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .currency-switch-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 0.2rem;
+      display: flex;
+    }
+    .curr-btn {
+      min-height: 38px;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .curr-btn.active {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .pricing-cards-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .pricing-cards-wrap { grid-template-columns: repeat(3, 1fr); align-items: center; }
+    }
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .pricing-card.highlighted {
+      background: #171717;
+      border-color: var(--accent);
+      box-shadow: 0 0 28px rgba(0, 212, 255, 0.25);
+    }
+    @media (min-width: 768px) {
+      .pricing-card.highlighted { transform: scale(1.04); }
+    }
+    .popular-flag {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #00d4ff, #0077ff);
+      color: #000;
+      font-weight: 900;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      white-space: nowrap;
+    }
+    .price-num {
+      font-family: var(--font-heading);
+      font-size: 2.3rem;
+      font-weight: 900;
+      margin: 0.75rem 0 1.25rem 0;
+      color: #fff;
+    }
+    .price-num span {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .pricing-features-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      color: #d1d5db;
+      flex-grow: 1;
+    }
+    .pricing-features-list li {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+    .pricing-features-list li span.chk {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    /* -------------------------------------------------------------
+       8. CTA SECTION & BOOKING FORM
+    ------------------------------------------------------------- */
+    .cta-card-box {
+      background: linear-gradient(135deg, #181818 0%, #0d0d0d 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 24px;
+      padding: 1.75rem 1.25rem;
+      overflow: hidden;
+    }
+    @media (min-width: 768px) {
+      .cta-card-box { padding: 3.5rem 2.5rem; }
+      .cta-card-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+    }
+    .cta-form-box {
+      background: rgba(10, 10, 10, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem 1.25rem;
+      margin-top: 1.75rem;
+    }
+    @media (min-width: 768px) {
+      .cta-form-box { margin-top: 0; }
+    }
+    .form-ctrl-group {
+      margin-bottom: 1rem;
+    }
+    .form-ctrl-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+      color: #d1d5db;
+    }
+    .form-ctrl-input {
+      width: 100%;
+      min-height: 48px;
+      padding: 0.75rem 1rem;
+      background: #141414;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 16px; /* 16px prevents mobile browser auto-zoom */
+      outline: none;
+    }
+    .form-ctrl-input:focus {
+      border-color: var(--accent);
+    }
+
+    /* -------------------------------------------------------------
+       9. FOOTER
+    ------------------------------------------------------------- */
+    .site-footer {
+      background: #050505;
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 0 2rem 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (min-width: 640px) {
+      .footer-columns { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 992px) {
+      .footer-columns { grid-template-columns: 1.5fr 1fr 1fr 1.3fr; gap: 2.5rem; }
+    }
+    .footer-col-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-social-row {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .social-link-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    .social-link-btn:active {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* -------------------------------------------------------------
+       10. TOUCH-OPTIMIZED BOTTOM SHEET MODAL
+    ------------------------------------------------------------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 200;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0;
+    }
+    @media (min-width: 640px) {
+      .modal-overlay {
+        align-items: center;
+        padding: 1.5rem;
+      }
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-card {
+      background: #141414;
+      border: 1px solid var(--border-accent);
+      border-radius: 24px 24px 0 0;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.75rem 1.25rem calc(1.75rem + var(--safe-bottom));
+      position: relative;
+      animation: slideUp 0.25s ease;
+    }
+    @media (min-width: 640px) {
+      .modal-card {
+        border-radius: 24px;
+        padding: 2.25rem;
+        animation: fadeIn 0.2s ease;
+      }
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      max-width: 440px;
+      margin: 0 auto;
+      background: #181818;
+      border: 1px solid var(--accent);
+      color: #fff;
+      padding: 0.9rem 1.25rem;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR (Desktops) -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div>📍 Flagship Studios: Bengaluru • Mumbai • Delhi NCR • Hyderabad</div>
+      <div>
+        <span>⏰ Mon–Sun: 6:00 AM – 10:00 PM</span> &nbsp;|&nbsp;
+        <span>📞 <a href="tel:+919876543210" style="color:var(--accent); font-weight:700;">+91 98765 43210</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. STICKY HEADER -->
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a href="#" class="brand-logo">
+        <div class="brand-mark">D</div>
+        <div class="brand-name">DEMO <span>FITNESS</span></div>
+      </a>
+
+      <ul class="nav-menu-desktop">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#programs" class="nav-link">Programs</a></li>
+        <li><a href="#trainers" class="nav-link">Trainers</a></li>
+        <li><a href="#schedule" class="nav-link">Schedule</a></li>
+        <li><a href="#results" class="nav-link">Results</a></li>
+        <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="header-actions">
+        <button class="btn btn-primary header-join-desktop" onclick="openModal('Free 7-Day Trial Pass')">
+          Join Now
+        </button>
+        <button class="menu-toggle" id="menuToggleBtn" aria-label="Toggle navigation menu">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="#about" class="drawer-nav-link" onclick="closeDrawer()">About Heritage</a>
+      <a href="#programs" class="drawer-nav-link" onclick="closeDrawer()">Training Programs</a>
+      <a href="#trainers" class="drawer-nav-link" onclick="closeDrawer()">Master Coaches</a>
+      <a href="#schedule" class="drawer-nav-link" onclick="closeDrawer()">Class Schedule</a>
+      <a href="#results" class="drawer-nav-link" onclick="closeDrawer()">Member Results</a>
+      <a href="#pricing" class="drawer-nav-link" onclick="closeDrawer()">Membership Plans</a>
+      <a href="#contact" class="drawer-nav-link" onclick="closeDrawer()">Studio Location</a>
+
+      <div class="drawer-footer">
+        <button class="btn btn-primary" onclick="closeDrawer(); openModal('Free 7-Day Trial (Drawer)');">
+          ⚡ Claim 7-Day Free Pass
+        </button>
+        <a href="https://wa.me/919876543210?text=Hi%20DEMO%20Fitness!%20I%20want%20to%20know%20more." target="_blank" class="btn btn-whatsapp">
+          💬 WhatsApp Concierge
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION -->
+  <section class="hero" id="home">
+    <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-athlete-working-out-with-heavy-ropes-in-gym-40286-large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <div class="city-select-bar">
+        <span>📍 Studio:</span>
+        <select id="heroLocationSelect">
+          <option value="Bengaluru (Indiranagar)">Bengaluru - Indiranagar 100ft Rd</option>
+          <option value="Bengaluru (Koramangala)">Bengaluru - Koramangala 4th Block</option>
+          <option value="Mumbai (Bandra West)">Mumbai - Bandra West Linking Rd</option>
+          <option value="Delhi NCR (Cyber City)">Delhi NCR - DLF Cyber City</option>
+          <option value="Hyderabad (Jubilee Hills)">Hyderabad - Jubilee Hills Rd 36</option>
+        </select>
+      </div>
+
+      <h1 class="hero-title">
+        Transform Your Body, <br>
+        <span class="gradient-text">Build Your Future.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        India's highest-rated high-performance athletic studio. Olympic lifting platforms, heart-rate tracked HIIT circuits, certified master faculty, and personalized InBody 570 body composition tracking.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openModal('Free 7-Day Trial Pass')">
+          ⚡ Start Free 7-Day Trial
+        </button>
+        <a href="#programs" class="btn btn-secondary">
+          Explore Programs
+        </a>
+      </div>
+
+      <div class="hero-metrics">
+        <div>
+          <div class="metric-val">5,200<span>+</span></div>
+          <div class="metric-lbl">Active Members</div>
+        </div>
+        <div>
+          <div class="metric-val">4.9<span>/5</span></div>
+          <div class="metric-lbl">Google Rating (1.4k+ Reviews)</div>
+        </div>
+        <div>
+          <div class="metric-val">38<span>+</span></div>
+          <div class="metric-lbl">Certified Trainers</div>
+        </div>
+        <div>
+          <div class="metric-val">100<span>%</span></div>
+          <div class="metric-lbl">HEPA Air Sanitized</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ABOUT SECTION -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-wrap">
+        <div>
+          <div class="badge">Why Choose DEMO Fitness</div>
+          <h2 class="section-title">Engineered for Performance & Community</h2>
+          <p class="section-desc" style="margin-bottom:1.5rem;">
+            We replaced generic gym routines with science-backed athletic training accessible to working professionals, beginners, and athletes alike.
+          </p>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🏆</div>
+            <div>
+              <h3>CSCS® & ACE Certified Coaches</h3>
+              <p>Internationally certified specialists in progressive biomechanics, corrective exercise, and nutrition.</p>
+            </div>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <div>
+              <h3>Eleiko & Rogue Olympic Iron</h3>
+              <p>Calibrated bumper plates, competition power cages, turf sprint lanes, and assault air bikes.</p>
+            </div>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🤝</div>
+            <div>
+              <h3>Ego-Free Supportive Community</h3>
+              <p>Supportive group challenges, mobility workshops, nutrition coaching, and uplifting training partners.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=800&q=80" alt="DEMO Gym floor and barbells">
+          <div class="about-floating-chip">
+            <strong style="color:#fff; display:block; font-size:0.9rem;">15,000 Sq. Ft. Athletic Sanctuary</strong>
+            <span style="color:var(--text-muted);">Cold plunge suites, steam recovery & clean locker rooms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FEATURED PROGRAMS -->
+  <section class="section" id="programs" style="background:#0d0d0d;">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Disciplines & Classes</div>
+        <h2 class="section-title">Built For Every Goal</h2>
+        <p class="section-desc">From heavy Olympic lifts to heart-rate interval circuits and mindful recovery.</p>
+      </div>
+
+      <div class="programs-grid">
+        <!-- 1. Strength -->
+        <div class="program-card">
+          <div class="program-img-box">
+            <span class="program-tag-pill">High Intensity</span>
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" alt="Strength & Conditioning">
+          </div>
+          <div class="program-content">
+            <h3>Strength & Hypertrophy</h3>
+            <div class="program-meta-chips">
+              <span class="meta-chip">⏱️ 55 Mins</span>
+              <span class="meta-chip">🔥 500-750 kcal</span>
+              <span class="meta-chip">📊 All Levels</span>
+            </div>
+            <p>Barbell technique, compound progressive overload, and athletic structural power.</p>
+            <button class="btn btn-secondary" onclick="openModal('Strength & Conditioning Program')">Try Free Class</button>
+          </div>
+        </div>
+
+        <!-- 2. HIIT -->
+        <div class="program-card">
+          <div class="program-img-box">
+            <span class="program-tag-pill">Popular</span>
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600&q=80" alt="HIIT Cardio">
+          </div>
+          <div class="program-content">
+            <h3>Athletic HIIT & MetCon</h3>
+            <div class="program-meta-chips">
+              <span class="meta-chip">⏱️ 45 Mins</span>
+              <span class="meta-chip">🔥 650-850 kcal</span>
+              <span class="meta-chip">📊 Fast-Paced</span>
+            </div>
+            <p>Assault bike sprints, kettlebell complexes, ski-ergs, and high-energy conditioning.</p>
+            <button class="btn btn-secondary" onclick="openModal('Athletic HIIT Class')">Try Free Class</button>
+          </div>
+        </div>
+
+        <!-- 3. Boxing -->
+        <div class="program-card">
+          <div class="program-img-box">
+            <span class="program-tag-pill">Combat Power</span>
+            <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80" alt="Boxing & Combat">
+          </div>
+          <div class="program-content">
+            <h3>Boxing & Combat Fitness</h3>
+            <div class="program-meta-chips">
+              <span class="meta-chip">⏱️ 50 Mins</span>
+              <span class="meta-chip">🔥 700-900 kcal</span>
+              <span class="meta-chip">📊 All Levels</span>
+            </div>
+            <p>Heavy bag strikes, pad combinations, footwork defense, and explosive rotational core strength.</p>
+            <button class="btn btn-secondary" onclick="openModal('Boxing & Combat Class')">Try Free Class</button>
+          </div>
+        </div>
+
+        <!-- 4. Yoga -->
+        <div class="program-card">
+          <div class="program-img-box">
+            <span class="program-tag-pill">Recovery & Mind</span>
+            <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80" alt="Yoga & Mobility">
+          </div>
+          <div class="program-content">
+            <h3>Vinyasa & Kinetic Mobility</h3>
+            <div class="program-meta-chips">
+              <span class="meta-chip">⏱️ 60 Mins</span>
+              <span class="meta-chip">🔥 300-450 kcal</span>
+              <span class="meta-chip">📊 Restorative</span>
+            </div>
+            <p>Decompress spinal compression, mobilize tight hips, and re-center your nervous system.</p>
+            <button class="btn btn-secondary" onclick="openModal('Yoga & Mobility Class')">Try Free Class</button>
+          </div>
+        </div>
+
+        <!-- 5. 1-on-1 PT -->
+        <div class="program-card">
+          <div class="program-img-box">
+            <span class="program-tag-pill">Custom Tailored</span>
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="Personal Training">
+          </div>
+          <div class="program-content">
+            <h3>1-on-1 Private Coaching</h3>
+            <div class="program-meta-chips">
+              <span class="meta-chip">⏱️ 60 Mins</span>
+              <span class="meta-chip">🔥 Bespoke</span>
+              <span class="meta-chip">📊 1-to-1</span>
+            </div>
+            <p>Dedicated coach, personalized nutrition plan, weekly body scans, and zero distractions.</p>
+            <button class="btn btn-secondary" onclick="openModal('Private Personal Training')">Book Consultation</button>
+          </div>
+        </div>
+
+        <!-- 6. Functional Core -->
+        <div class="program-card">
+          <div class="program-img-box">
+            <span class="program-tag-pill">Longevity</span>
+            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80" alt="Functional Fitness">
+          </div>
+          <div class="program-content">
+            <h3>Functional Longevity & Core</h3>
+            <div class="program-meta-chips">
+              <span class="meta-chip">⏱️ 50 Mins</span>
+              <span class="meta-chip">🔥 450-600 kcal</span>
+              <span class="meta-chip">📊 Rehab & Power</span>
+            </div>
+            <p>Eliminate joint aches, build bulletproof posture, and develop functional everyday strength.</p>
+            <button class="btn btn-secondary" onclick="openModal('Functional Longevity Class')">Try Free Class</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TRAINERS SECTION -->
+  <section class="section" id="trainers">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Master Faculty</div>
+        <h2 class="section-title">Coached By Champions</h2>
+        <p class="section-desc">Certified master coaches with an obsessive commitment to your safety, form, and personal bests.</p>
+      </div>
+
+      <div class="trainers-scroll-wrap">
+        <!-- Trainer 1 -->
+        <div class="trainer-card">
+          <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=600&q=80" alt="Vikram Malhotra" class="trainer-photo">
+          <div class="trainer-details">
+            <h3>Vikram Malhotra</h3>
+            <div class="trainer-specialty">Strength & Olympic Lifting</div>
+            <div class="trainer-certs-row">
+              <span class="cert-tag">CSCS®</span>
+              <span class="cert-tag">USAW L2</span>
+              <span class="cert-tag">11 Yrs Exp</span>
+            </div>
+            <button class="btn btn-secondary" onclick="openModal('Private Session with Coach Vikram')">Book 1-on-1</button>
+          </div>
+        </div>
+
+        <!-- Trainer 2 -->
+        <div class="trainer-card">
+          <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=600&q=80" alt="Ananya Roy" class="trainer-photo">
+          <div class="trainer-details">
+            <h3>Ananya Roy</h3>
+            <div class="trainer-specialty">Master HIIT & MetCon</div>
+            <div class="trainer-certs-row">
+              <span class="cert-tag">ACE-CPT</span>
+              <span class="cert-tag">Precision Nutrition</span>
+            </div>
+            <button class="btn btn-secondary" onclick="openModal('Private Session with Coach Ananya')">Book 1-on-1</button>
+          </div>
+        </div>
+
+        <!-- Trainer 3 -->
+        <div class="trainer-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Priya Nair" class="trainer-photo">
+          <div class="trainer-details">
+            <h3>Priya Nair</h3>
+            <div class="trainer-specialty">Mobility & Yoga Faculty</div>
+            <div class="trainer-certs-row">
+              <span class="cert-tag">500-HR RYT</span>
+              <span class="cert-tag">FRC® Mobility</span>
+            </div>
+            <button class="btn btn-secondary" onclick="openModal('Private Session with Coach Priya')">Book 1-on-1</button>
+          </div>
+        </div>
+
+        <!-- Trainer 4 -->
+        <div class="trainer-card">
+          <img src="https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?auto=format&fit=crop&w=600&q=80" alt="Rohan Fernandes" class="trainer-photo">
+          <div class="trainer-details">
+            <h3>Rohan Fernandes</h3>
+            <div class="trainer-specialty">Boxing & Combat Striking</div>
+            <div class="trainer-certs-row">
+              <span class="cert-tag">National Gold Medal</span>
+              <span class="cert-tag">ISSA-CPT</span>
+            </div>
+            <button class="btn btn-secondary" onclick="openModal('Private Session with Coach Rohan')">Book 1-on-1</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CLASS SCHEDULE -->
+  <section class="section" id="schedule" style="background:#0d0d0d;">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Weekly Schedule</div>
+        <h2 class="section-title">Train on Your Schedule</h2>
+        <p class="section-desc">Classes operate continuously every day with morning and evening sessions.</p>
+      </div>
+
+      <div class="schedule-box">
+        <!-- Horizontal swipeable day selector -->
+        <div class="day-selector-scroll">
+          <button class="day-pill active" onclick="switchDay('Monday', this)">Mon</button>
+          <button class="day-pill" onclick="switchDay('Tuesday', this)">Tue</button>
+          <button class="day-pill" onclick="switchDay('Wednesday', this)">Wed</button>
+          <button class="day-pill" onclick="switchDay('Thursday', this)">Thu</button>
+          <button class="day-pill" onclick="switchDay('Friday', this)">Fri</button>
+          <button class="day-pill" onclick="switchDay('Saturday', this)">Sat</button>
+          <button class="day-pill" onclick="switchDay('Sunday', this)">Sun</button>
+        </div>
+
+        <div class="schedule-alert-banner">
+          ⏰ <strong>Note:</strong> Classes start at 6:00 AM sharp, and the final studio class starts at 7:00 PM.
+        </div>
+
+        <!-- Mobile Card List View -->
+        <div class="mobile-schedule-list" id="mobileScheduleContainer">
+          <!-- Populated via JavaScript -->
+        </div>
+
+        <!-- Desktop Table View -->
+        <table class="desktop-schedule-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Class Name</th>
+              <th>Instructor</th>
+              <th>Intensity</th>
+              <th>Availability</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="desktopScheduleBody">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. MEMBER RESULTS -->
+  <section class="section" id="results">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Audited Member Outcomes</div>
+        <h2 class="section-title">Real Results from Real Members</h2>
+        <p class="section-desc">Audited InBody 570 scans and authentic transformations achieved at DEMO Fitness.</p>
+      </div>
+
+      <div class="results-grid">
+        <!-- Story 1 -->
+        <div class="result-card">
+          <div class="before-after-split">
+            <div class="split-pic">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="Before">
+              <span class="split-tag">Month 0</span>
+            </div>
+            <div class="split-pic">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="After">
+              <span class="split-tag" style="background:var(--accent); color:#000;">Month 6</span>
+            </div>
+          </div>
+          <div class="result-stats-row">
+            <div><span>Fat Loss</span><strong>-14.8 kg</strong></div>
+            <div><span>Muscle</span><strong>+3.2 kg Lean</strong></div>
+            <div><span>Program</span><strong>HIIT + Barbell</strong></div>
+          </div>
+          <p class="result-quote">"Desk job wrecked my back. Coach Vikram fixed my form and the community kept me showing up at 6:30 AM."</p>
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem;">
+            <strong style="color:#fff;">Arjun Singhania (34)</strong>
+            <span style="color:#f59e0b;">★★★★★</span>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="result-card">
+          <div class="before-after-split">
+            <div class="split-pic">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Before">
+              <span class="split-tag">Month 0</span>
+            </div>
+            <div class="split-pic">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="After">
+              <span class="split-tag" style="background:var(--accent); color:#000;">Month 4</span>
+            </div>
+          </div>
+          <div class="result-stats-row">
+            <div><span>Body Fat</span><strong>31% → 19%</strong></div>
+            <div><span>Stamina</span><strong>3x Increase</strong></div>
+            <div><span>Program</span><strong>Boxing & HIIT</strong></div>
+          </div>
+          <p class="result-quote">"I had gym anxiety for years until DEMO. The coaches correct with patience. Dropping 2 dress sizes was just a bonus!"</p>
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem;">
+            <strong style="color:#fff;">Kavita Rao (29)</strong>
+            <span style="color:#f59e0b;">★★★★★</span>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="result-card">
+          <div class="before-after-split">
+            <div class="split-pic">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Before">
+              <span class="split-tag">Month 0</span>
+            </div>
+            <div class="split-pic">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" alt="After">
+              <span class="split-tag" style="background:var(--accent); color:#000;">Month 8</span>
+            </div>
+          </div>
+          <div class="result-stats-row">
+            <div><span>Lean Mass</span><strong>+6.4 kg</strong></div>
+            <div><span>Squat PR</span><strong>80kg → 145kg</strong></div>
+            <div><span>Program</span><strong>Heavy Strength</strong></div>
+          </div>
+          <p class="result-quote">"Competition Eleiko plates and coaches who know periodization. Pushed my PRs to heights I never imagined."</p>
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem;">
+            <strong style="color:#fff;">Devendra Reddy (26)</strong>
+            <span style="color:#f59e0b;">★★★★★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. PRICING SECTION -->
+  <section class="section" id="pricing" style="background:#0d0d0d;">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Simple Memberships</div>
+        <h2 class="section-title">Invest in Your Health</h2>
+        <p class="section-desc">Zero hidden registration fees. Every plan includes a 100% Free 7-Day Trial Pass.</p>
+      </div>
+
+      <div class="currency-toggle-wrap">
+        <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">Currency:</span>
+        <div class="currency-switch-box">
+          <button class="curr-btn active" id="btnINR" onclick="setCurrency('INR')">₹ INR</button>
+          <button class="curr-btn" id="btnUSD" onclick="setCurrency('USD')">$ USD</button>
+        </div>
+      </div>
+
+      <div class="pricing-cards-wrap">
+        <!-- Starter -->
+        <div class="pricing-card">
+          <h3 style="font-size:1.3rem; font-weight:800;">Monthly Starter</h3>
+          <p style="color:var(--text-muted); font-size:0.8rem;">For consistent independent workouts and open floor training.</p>
+          <div class="price-num" data-inr="3,499" data-usd="45">
+            <span class="sym">₹</span><span class="amt">3,499</span> <span>/ month</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li><span class="chk">✓</span> Full open weight & cardio floor access</li>
+            <li><span class="chk">✓</span> Locker, towel & steam shower rooms</li>
+            <li><span class="chk">✓</span> 1 InBody 570 body scan included</li>
+            <li><span class="chk">✓</span> Workout logging mobile app</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="openModal('Starter Membership')">Choose Starter</button>
+        </div>
+
+        <!-- Premium (Highlighted) -->
+        <div class="pricing-card highlighted">
+          <div class="popular-flag">Most Popular</div>
+          <h3 style="font-size:1.3rem; font-weight:800;">Quarterly Premium</h3>
+          <p style="color:var(--text-muted); font-size:0.8rem;">Full studio classes + personal coaching reviews included.</p>
+          <div class="price-num" data-inr="8,999" data-usd="115">
+            <span class="sym">₹</span><span class="amt">8,999</span> <span>/ 3 months</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li><span class="chk">✓</span> <strong>Everything in Starter, plus:</strong></li>
+            <li><span class="chk">✓</span> Unlimited HIIT, Boxing & Yoga classes</li>
+            <li><span class="chk">✓</span> 2 complimentary 1-on-1 PT sessions</li>
+            <li><span class="chk">✓</span> Multi-club access (all Indian studios)</li>
+          </ul>
+          <button class="btn btn-primary" onclick="openModal('Quarterly Premium Membership')">Claim Free Trial First</button>
+        </div>
+
+        <!-- Elite -->
+        <div class="pricing-card">
+          <h3 style="font-size:1.3rem; font-weight:800;">Annual Elite VIP</h3>
+          <p style="color:var(--text-muted); font-size:0.8rem;">Maximum commitment with all recovery suites and guest passes.</p>
+          <div class="price-num" data-inr="28,999" data-usd="360">
+            <span class="sym">₹</span><span class="amt">28,999</span> <span>/ year</span>
+          </div>
+          <ul class="pricing-features-list">
+            <li><span class="chk">✓</span> <strong>Everything in Premium, plus:</strong></li>
+            <li><span class="chk">✓</span> Cold plunge recovery suite access</li>
+            <li><span class="chk">✓</span> Dedicated personal permanent locker</li>
+            <li><span class="chk">✓</span> 6 guest passes per year</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="openModal('Annual Elite VIP Membership')">Choose Annual Elite</button>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:1.75rem; color:var(--text-muted); font-size:0.8rem;">
+        🔒 All new members receive a <strong>Free 1-week trial pass</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CTA & BOOKING -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="cta-card-box">
+        <div class="cta-card-grid">
+          <div>
+            <div class="badge">Take The First Step</div>
+            <h2 style="font-size:clamp(1.75rem, 5vw, 2.75rem); font-weight:900; margin:0.6rem 0 0.85rem 0;">
+              Ready for Your Breakthrough?
+            </h2>
+            <p style="color:#d1d5db; font-size:0.95rem; margin-bottom:1.5rem;">
+              Visit the studio, test the equipment, and meet our head coaches. Zero cost, zero pressure.
+            </p>
+
+            <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.5rem;">
+              <div style="display:flex; gap:0.6rem; align-items:center;">
+                <span style="color:var(--accent); font-size:1.2rem;">💬</span>
+                <span style="font-size:0.85rem; color:#fff;">WhatsApp Concierge ready for instant queries</span>
+              </div>
+              <div style="display:flex; gap:0.6rem; align-items:center;">
+                <span style="color:var(--accent); font-size:1.2rem;">📊</span>
+                <span style="font-size:0.85rem; color:#fff;">Free InBody 570 scan included on your first visit</span>
+              </div>
+            </div>
+
+            <a href="https://wa.me/919876543210?text=Hi%20DEMO%20Fitness!%20I%20would%20like%20to%20claim%20my%20Free%207-Day%20Pass." target="_blank" class="btn btn-whatsapp" style="margin-bottom:1rem;">
+              💬 Instant WhatsApp Booking
+            </a>
+          </div>
+
+          <!-- Fast mobile consultation form -->
+          <div class="cta-form-box">
+            <h3 style="font-size:1.15rem; font-weight:800; margin-bottom:0.25rem;">Book Free Studio Tour</h3>
+            <p style="color:var(--text-muted); font-size:0.75rem; margin-bottom:1.25rem;">Fill out this quick form for instant slot confirmation.</p>
+
+            <form onsubmit="handleQuickTourSubmit(event)">
+              <div class="form-ctrl-group">
+                <label class="form-ctrl-label">Your Name</label>
+                <input type="text" required class="form-ctrl-input" placeholder="e.g. Rahul Sharma">
+              </div>
+
+              <div class="form-ctrl-group">
+                <label class="form-ctrl-label">Mobile Number (WhatsApp)</label>
+                <input type="tel" required class="form-ctrl-input" placeholder="+91 98765 43210">
+              </div>
+
+              <div class="form-ctrl-group">
+                <label class="form-ctrl-label">Studio City</label>
+                <select class="form-ctrl-input">
+                  <option>Bengaluru (Indiranagar)</option>
+                  <option>Bengaluru (Koramangala)</option>
+                  <option>Mumbai (Bandra West)</option>
+                  <option>Delhi NCR (Cyber City)</option>
+                  <option>Hyderabad (Jubilee Hills)</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top:0.5rem;">
+                Confirm Free Tour Slot
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-columns">
+        <div>
+          <div class="brand-logo" style="margin-bottom:0.75rem;">
+            <div class="brand-mark">D</div>
+            <div class="brand-name">DEMO <span>FITNESS</span></div>
+          </div>
+          <p style="font-size:0.85rem; line-height:1.6; margin-bottom:1rem;">
+            India's benchmark high-performance training studio. Empowering individuals to break physical limits with science, community, and world-class equipment.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://instagram.com" target="_blank" class="social-link-btn" aria-label="Instagram">📸</a>
+            <a href="https://facebook.com" target="_blank" class="social-link-btn" aria-label="Facebook">📘</a>
+            <a href="https://youtube.com" target="_blank" class="social-link-btn" aria-label="YouTube">▶️</a>
+            <a href="https://wa.me/919876543210" target="_blank" class="social-link-btn" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#about">About Our Heritage</a></li>
+            <li><a href="#programs">Training Programs</a></li>
+            <li><a href="#trainers">Certified Coaches</a></li>
+            <li><a href="#schedule">Class Schedule</a></li>
+            <li><a href="#results">Member Outcomes</a></li>
+            <li><a href="#pricing">Membership Plans</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Studio Hours</h4>
+          <p style="margin-bottom:0.4rem;"><strong style="color:#fff;">Mon – Fri:</strong> 6:00 AM – 10:00 PM</p>
+          <p style="margin-bottom:0.4rem;"><strong style="color:#fff;">Saturday:</strong> 6:00 AM – 9:00 PM</p>
+          <p style="margin-bottom:0.75rem;"><strong style="color:#fff;">Sunday:</strong> 7:00 AM – 7:00 PM</p>
+          <div style="font-size:0.75rem; color:var(--accent);">First class daily begins at 6:00 AM</div>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Newsletter</h4>
+          <p style="font-size:0.8rem; margin-bottom:0.75rem;">Get weekly training tips and exclusive membership perks.</p>
+          <form onsubmit="handleNewsletter(event)">
+            <input type="email" required placeholder="Your email address" class="form-ctrl-input" style="margin-bottom:0.5rem; min-height:44px;">
+            <button type="submit" class="btn btn-secondary" style="min-height:44px; font-size:0.8rem;">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem; text-align:center; font-size:0.75rem; color:var(--text-dim);">
+        © 2026 DEMO Fitness Studios India Pvt. Ltd. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE BOTTOM ACTION BAR (Thumb friendly) -->
+  <div class="mobile-bottom-bar">
+    <a href="https://wa.me/919876543210?text=Hi%20DEMO%20Fitness!%20I%20want%20to%20know%20more." target="_blank" class="bar-btn-wa">
+      <span>💬 WhatsApp</span>
+    </a>
+    <button class="bar-btn-trial" onclick="openModal('Mobile Quick Bar Trial')">
+      <span>⚡ Free 7-Day Pass</span>
+    </button>
+  </div>
+
+  <!-- TOUCH BOTTOM SHEET MODAL: 7-DAY TRIAL PASS -->
+  <div class="modal-overlay" id="trialModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal('trialModal')" aria-label="Close modal">✕</button>
+
+      <div id="modalFormBody">
+        <div class="badge" style="margin-bottom:0.4rem;">Limited Free Spots</div>
+        <h3 style="font-size:1.35rem; font-weight:900; text-transform:uppercase; margin-bottom:0.25rem;">
+          Activate 7-Day Pass
+        </h3>
+        <p style="color:var(--text-muted); font-size:0.8rem; margin-bottom:1.25rem;">
+          Full studio access, 1 group class trial, and 1 free InBody 570 body scan.
+        </p>
+
+        <form onsubmit="handleTrialModalSubmit(event)">
+          <div class="form-ctrl-group">
+            <label class="form-ctrl-label">Your Name *</label>
+            <input type="text" id="trialNameInput" required class="form-ctrl-input" placeholder="e.g. Arjun Menon">
+          </div>
+
+          <div class="form-ctrl-group">
+            <label class="form-ctrl-label">WhatsApp Mobile Number *</label>
+            <input type="tel" id="trialPhoneInput" required class="form-ctrl-input" placeholder="+91 98765 43210">
+          </div>
+
+          <div class="form-ctrl-group">
+            <label class="form-ctrl-label">Program / Plan</label>
+            <input type="text" id="trialPlanInput" readonly class="form-ctrl-input" style="color:var(--accent); font-weight:700;">
+          </div>
+
+          <div class="form-ctrl-group">
+            <label class="form-ctrl-label">Preferred Studio</label>
+            <select class="form-ctrl-input" id="trialCityInput">
+              <option>Bengaluru (Indiranagar)</option>
+              <option>Bengaluru (Koramangala)</option>
+              <option>Mumbai (Bandra West)</option>
+              <option>Delhi NCR (Cyber City)</option>
+              <option>Hyderabad (Jubilee Hills)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="margin-top:0.5rem;">
+            Claim My Free 7-Day Pass
+          </button>
+          <div style="font-size:0.7rem; color:var(--text-dim); text-align:center; margin-top:0.5rem;">
+            🔒 No credit card required. Confirmation code sent via WhatsApp.
+          </div>
+        </form>
+      </div>
+
+      <div id="modalSuccessBody" style="display:none; text-align:center; padding:1.5rem 0;">
+        <div style="font-size:3rem; margin-bottom:0.75rem;">🎉</div>
+        <h3 style="font-size:1.35rem; font-weight:900; margin-bottom:0.5rem;">Pass Activated!</h3>
+        <p style="color:var(--text-muted); font-size:0.85rem; line-height:1.6; margin-bottom:1.5rem;">
+          Your 7-day studio pass has been registered. Our studio concierge has sent your check-in QR code and instructions to your WhatsApp number.
+        </p>
+        <button class="btn btn-secondary" onclick="closeModal('trialModal')">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toastBox">
+    <span>⚡</span>
+    <span id="toastMsg">Notification message</span>
+  </div>
+
+  <!-- JAVASCRIPT: PURE ZERO-DEPENDENCY CLIENT LOGIC -->
+  <script>
+    // Schedule Database
+    const weeklySchedule = {
+      Monday: [
+        { time: '06:00 AM', name: 'Olympic Barbell & Strength', trainer: 'Vikram Malhotra', intensity: 'High', spots: 3 },
+        { time: '07:30 AM', name: 'Athletic MetCon HIIT', trainer: 'Ananya Roy', intensity: 'High', spots: 5 },
+        { time: '09:00 AM', name: 'Vinyasa Flow & Mobility', trainer: 'Priya Nair', intensity: 'Moderate', spots: 8 },
+        { time: '12:00 PM', name: 'Functional Core Stability', trainer: 'Vikram Malhotra', intensity: 'Moderate', spots: 6 },
+        { time: '05:30 PM', name: 'Boxing Combat Drills', trainer: 'Rohan Fernandes', intensity: 'High', spots: 4 },
+        { time: '07:00 PM', name: 'Late Night HIIT Blast', trainer: 'Ananya Roy', intensity: 'High', spots: 2 }
+      ],
+      Tuesday: [
+        { time: '06:00 AM', name: 'Athletic MetCon HIIT', trainer: 'Ananya Roy', intensity: 'High', spots: 4 },
+        { time: '07:30 AM', name: 'Barbell Hypertrophy', trainer: 'Vikram Malhotra', intensity: 'High', spots: 6 },
+        { time: '09:00 AM', name: 'Hip & Spine Mobility', trainer: 'Priya Nair', intensity: 'Low', spots: 10 },
+        { time: '05:30 PM', name: 'Kettlebell Velocity', trainer: 'Ananya Roy', intensity: 'High', spots: 5 },
+        { time: '07:00 PM', name: 'Boxing Footwork & Pads', trainer: 'Rohan Fernandes', intensity: 'High', spots: 3 }
+      ],
+      Wednesday: [
+        { time: '06:00 AM', name: 'Deadlift & Squat Mechanics', trainer: 'Vikram Malhotra', intensity: 'High', spots: 4 },
+        { time: '07:30 AM', name: 'Conditioning Triathlon Circuit', trainer: 'Ananya Roy', intensity: 'High', spots: 5 },
+        { time: '09:00 AM', name: 'Deep Fascia & Mobility', trainer: 'Priya Nair', intensity: 'Low', spots: 8 },
+        { time: '05:30 PM', name: 'Boxing Technical Sparring', trainer: 'Rohan Fernandes', intensity: 'High', spots: 4 },
+        { time: '07:00 PM', name: 'Functional Core & Abs', trainer: 'Vikram Malhotra', intensity: 'Moderate', spots: 7 }
+      ],
+      Thursday: [
+        { time: '06:00 AM', name: 'Tabata Sprint Intervals', trainer: 'Ananya Roy', intensity: 'High', spots: 5 },
+        { time: '07:30 AM', name: 'Overhead Press & Pulls', trainer: 'Vikram Malhotra', intensity: 'High', spots: 6 },
+        { time: '09:00 AM', name: 'Flow Yoga Alignment', trainer: 'Priya Nair', intensity: 'Moderate', spots: 9 },
+        { time: '05:30 PM', name: 'Heavy Bag Conditioning', trainer: 'Rohan Fernandes', intensity: 'High', spots: 2 },
+        { time: '07:00 PM', name: 'Sprint Conditioning', trainer: 'Ananya Roy', intensity: 'High', spots: 6 }
+      ],
+      Friday: [
+        { time: '06:00 AM', name: 'Full Body Barbell Complex', trainer: 'Vikram Malhotra', intensity: 'High', spots: 3 },
+        { time: '07:30 AM', name: 'Friday Fight Club Boxing', trainer: 'Rohan Fernandes', intensity: 'High', spots: 2 },
+        { time: '09:00 AM', name: 'De-Stress Breathwork & Yoga', trainer: 'Priya Nair', intensity: 'Low', spots: 12 },
+        { time: '05:30 PM', name: 'Athletic Turf Agility', trainer: 'Ananya Roy', intensity: 'High', spots: 5 },
+        { time: '07:00 PM', name: 'Weekend Warmup MetCon', trainer: 'Vikram Malhotra', intensity: 'High', spots: 4 }
+      ],
+      Saturday: [
+        { time: '07:00 AM', name: 'Weekend Super-Circuit', trainer: 'Ananya & Vikram', intensity: 'Peak', spots: 6 },
+        { time: '08:30 AM', name: 'Boxing Masterclass', trainer: 'Rohan Fernandes', intensity: 'High', spots: 4 },
+        { time: '10:00 AM', name: 'Chakra Mobility & Spine', trainer: 'Priya Nair', intensity: 'Moderate', spots: 8 },
+        { time: '05:00 PM', name: 'Community Lift Session', trainer: 'Vikram Malhotra', intensity: 'Moderate', spots: 10 }
+      ],
+      Sunday: [
+        { time: '07:30 AM', name: 'Sunday Recovery & Mobility', trainer: 'Priya Nair', intensity: 'Low', spots: 15 },
+        { time: '09:00 AM', name: 'Aerobic Base Endurance Run/Row', trainer: 'Ananya Roy', intensity: 'Moderate', spots: 8 },
+        { time: '10:30 AM', name: 'Open Coaching Hour', trainer: 'All Coaches', intensity: 'Flexible', spots: 20 },
+        { time: '05:00 PM', name: 'Sound Bath & Yoga Nidra', trainer: 'Priya Nair', intensity: 'Low', spots: 18 }
+      ]
+    };
+
+    // Render schedule for mobile card list & desktop table
+    function renderSchedule(day) {
+      const items = weeklySchedule[day] || [];
+      const mobileList = document.getElementById('mobileScheduleContainer');
+      const desktopTable = document.getElementById('desktopScheduleBody');
+
+      // 1. Mobile Cards
+      mobileList.innerHTML = items.map(c => `
+        <div class="mobile-class-item">
+          <div class="mobile-class-header">
+            <span class="mobile-class-time">⏰ ${c.time}</span>
+            <span class="badge" style="font-size:0.62rem;">${c.intensity}</span>
+          </div>
+          <div class="mobile-class-title">${c.name}</div>
+          <div class="mobile-class-details">
+            <span>Coach: <strong style="color:#fff;">${c.trainer}</strong></span>
+            <span style="color:#10b981; font-weight:700;">${c.spots} spots left</span>
+          </div>
+          <button class="btn btn-secondary" style="min-height:40px; padding:0.5rem; font-size:0.75rem;" onclick="openModal('${c.name} (${c.time}, ${day})')">
+            Reserve Free Spot
+          </button>
+        </div>
+      `).join('');
+
+      // 2. Desktop Table
+      desktopTable.innerHTML = items.map(c => `
+        <tr>
+          <td style="color:var(--accent); font-weight:800;">${c.time}</td>
+          <td style="font-weight:800; color:#fff;">${c.name}</td>
+          <td style="color:#d1d5db;">${c.trainer}</td>
+          <td><span class="badge" style="font-size:0.65rem;">${c.intensity}</span></td>
+          <td style="color:#10b981; font-weight:700;">${c.spots} spots left</td>
+          <td>
+            <button class="btn btn-secondary" style="min-height:36px; padding:0.4rem 0.9rem; font-size:0.75rem;" onclick="openModal('${c.name} (${c.time}, ${day})')">
+              Reserve
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function switchDay(day, btn) {
+      document.querySelectorAll('.day-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderSchedule(day);
+    }
+
+    // Currency Switcher
+    function setCurrency(curr) {
+      const isUSD = curr === 'USD';
+      document.getElementById('btnINR').classList.toggle('active', !isUSD);
+      document.getElementById('btnUSD').classList.toggle('active', isUSD);
+
+      document.querySelectorAll('.price-num').forEach(el => {
+        const inr = el.getAttribute('data-inr');
+        const usd = el.getAttribute('data-usd');
+        el.querySelector('.sym').textContent = isUSD ? '$' : '₹';
+        el.querySelector('.amt').textContent = isUSD ? usd : inr;
+      });
+      showToast(`Currency switched to ${curr}`);
+    }
+
+    // Modal Handling
+    function openModal(planName) {
+      document.getElementById('trialPlanInput').value = planName || 'Free 7-Day Trial Pass';
+      document.getElementById('modalFormBody').style.display = 'block';
+      document.getElementById('modalSuccessBody').style.display = 'none';
+      document.getElementById('trialModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleTrialModalSubmit(e) {
+      e.preventDefault();
+      document.getElementById('modalFormBody').style.display = 'none';
+      document.getElementById('modalSuccessBody').style.display = 'block';
+    }
+
+    function handleQuickTourSubmit(e) {
+      e.preventDefault();
+      showToast('Tour request booked! We will WhatsApp your confirmation.');
+      e.target.reset();
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      showToast('Subscribed to DEMO Fitness weekly workout tips!');
+      e.target.reset();
+    }
+
+    // Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.style.display = 'flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3500);
+    }
+
+    // Mobile Drawer Navigation
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    function toggleDrawer() {
+      mobileDrawer.classList.toggle('open');
+    }
+    function closeDrawer() {
+      mobileDrawer.classList.remove('open');
+    }
+    menuToggleBtn.addEventListener('click', toggleDrawer);
+
+    // Close modal on outside touch
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('trialModal');
+      if (e.target === modal) {
+        closeModal('trialModal');
+      }
+    });
+
+    // Initialize
+    renderSchedule('Monday');
+  </script>
+</body>
+</html>

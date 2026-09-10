@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom glow effects & subtle dark gym accents */
+.accent-glow {
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.35);
+}
+
+.accent-glow-strong {
+  box-shadow: 0 0 35px rgba(0, 212, 255, 0.6);
+}
+
+.accent-glow-green {
+  box-shadow: 0 0 25px rgba(0, 255, 128, 0.35);
+}
+
+.gym-gradient {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
+}
+
+.hero-overlay {
+  background: radial-gradient(circle at center, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.85) 80%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00D4FF;
+}

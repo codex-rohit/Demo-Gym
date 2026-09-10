@@ -1,0 +1,8 @@
+{
+  "name": "DEMO Fitness Studio",
+  "description": "Premium fitness club and training studio in India featuring world-class coaching, strength training, HIIT, boxing, and flexible memberships.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
